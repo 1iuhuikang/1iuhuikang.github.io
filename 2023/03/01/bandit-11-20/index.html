@@ -20,14 +20,14 @@
 
   <meta name="description" content="bandit 11密码字母移位了13位，又称ROT13，古老而简单的加密方式 1234bandit11@bandit:~$ cat data.txtGur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEibandit11@bandit:~$ cat data.txt | tr &amp;#x27;a-zA-Z&amp;#x27; &amp;#x27;n-za-mN-ZA-M&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bandit-11-20">
+<meta property="og:title" content="bandit_11-20">
 <meta property="og:url" content="http://example.com/2023/03/01/bandit-11-20/index.html">
 <meta property="og:site_name" content="Liu Huikang">
 <meta property="og:description" content="bandit 11密码字母移位了13位，又称ROT13，古老而简单的加密方式 1234bandit11@bandit:~$ cat data.txtGur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEibandit11@bandit:~$ cat data.txt | tr &amp;#x27;a-zA-Z&amp;#x27; &amp;#x27;n-za-mN-ZA-M&amp;#x">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://p.ipic.vip/zbufl1.gif">
 <meta property="article:published_time" content="2023-03-01T02:35:54.000Z">
-<meta property="article:modified_time" content="2023-03-01T03:53:57.225Z">
+<meta property="article:modified_time" content="2023-03-01T07:42:06.709Z">
 <meta property="article:author" content="Liu Huikang">
 <meta property="article:tag" content="bandit">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>bandit-11-20 | Liu Huikang</title>
+  <title>bandit_11-20 | Liu Huikang</title>
   
 
 
@@ -164,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          bandit-11-20
+          bandit_11-20
         </h1>
 
         <div class="post-meta">
@@ -175,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-03-01 10:35:54 / Modified: 11:53:57" itemprop="dateCreated datePublished" datetime="2023-03-01T10:35:54+08:00">2023-03-01</time>
+              <time title="Created: 2023-03-01 10:35:54 / Modified: 15:42:06" itemprop="dateCreated datePublished" datetime="2023-03-01T10:35:54+08:00">2023-03-01</time>
             </span>
 
           
@@ -194,7 +194,118 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bandit11@bandit:~$ cat data.txt</span><br><span class="line">Gur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEi</span><br><span class="line">bandit11@bandit:~$ cat data.txt | tr &#x27;a-zA-Z&#x27; &#x27;n-za-mN-ZA-M&#x27;</span><br><span class="line">The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv</span><br></pre></td></tr></table></figure>
 
 <p>tr命令全名text replacer，替换文本字符，直接接需要替换内容加替换后内容</p>
-<h1 id="bandit12"><a href="#bandit12" class="headerlink" title="bandit12"></a>bandit12</h1>
+<h1 id="bandit-12"><a href="#bandit-12" class="headerlink" title="bandit 12"></a>bandit 12</h1><p>提示data文件被反复压缩了，提示去&#x2F;tmp路径下操作，因为可以mkdir</p>
+<p>xxd用于16进制输出，或将16进制恢复至二进制格式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ cp ~/data.txt /tmp/lhk/</span><br><span class="line">bandit12@bandit:/tmp/lhk$ ls</span><br><span class="line">data.txt</span><br><span class="line">bandit12@bandit:/tmp/lhk$ xxd -r data.txt &gt; data.bin</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data.bin</span><br><span class="line">data.bin: gzip compressed data, was &quot;data2.bin&quot;, last modified: Tue Feb 21 22:02:52 2023, max compression, from Unix, original size modulo 2^32 564</span><br></pre></td></tr></table></figure>
+
+<p>发现是gzip格式，改名，解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ mv data.bin data.gz</span><br><span class="line">bandit12@bandit:/tmp/lhk$ gzip -d data.gz</span><br><span class="line">bandit12@bandit:/tmp/lhk$ ls</span><br><span class="line">data  data.txt</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data</span><br><span class="line">data: bzip2 compressed data, block size = 900k</span><br></pre></td></tr></table></figure>
+
+<p>发现是bzip2格式，改名，解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ mv data data.bz2</span><br><span class="line">bandit12@bandit:/tmp/lhk$ bzip2 -d data.bz2</span><br><span class="line">bandit12@bandit:/tmp/lhk$ ls</span><br><span class="line">data  data.txt</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data</span><br><span class="line">data: gzip compressed data, was &quot;data4.bin&quot;, last modified: Tue Feb 21 22:02:52 2023, max compression, from Unix, original size modulo 2^32 20480</span><br></pre></td></tr></table></figure>
+
+<p>发现是gzip格式，改名，解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ mv data data.gz</span><br><span class="line">bandit12@bandit:/tmp/lhk$ gzip -d data.gz</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data</span><br><span class="line">data: POSIX tar archive (GNU)</span><br></pre></td></tr></table></figure>
+
+<p>发现是tar格式，改名，解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ mv data data.tar</span><br><span class="line">bandit12@bandit:/tmp/lhk$ tar xvf data.tar</span><br><span class="line">data5.bin</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data5.bin</span><br><span class="line">data5.bin: POSIX tar archive (GNU)</span><br></pre></td></tr></table></figure>
+
+<p>又是tar格式，改名，解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ mv data5.bin data5.tar</span><br><span class="line">bandit12@bandit:/tmp/lhk$ tar xvf data5.tar</span><br><span class="line">data6.bin</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data6.bin</span><br><span class="line">data6.bin: bzip2 compressed data, block size = 900k</span><br></pre></td></tr></table></figure>
+
+<p>发现是bzip2格式，改名，解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ ls</span><br><span class="line">data5.tar  data6.bz2  data.tar  data.txt</span><br><span class="line">bandit12@bandit:/tmp/lhk$ bzip2 -d data6.bz2</span><br><span class="line">bandit12@bandit:/tmp/lhk$ ls</span><br><span class="line">data5.tar  data6  data.tar  data.txt</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data6</span><br><span class="line">data6: POSIX tar archive (GNU)</span><br></pre></td></tr></table></figure>
+
+<p>发现是tar格式，改名，解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ mv data6 data.tar</span><br><span class="line">bandit12@bandit:/tmp/lhk$ tar xvf data.tar</span><br><span class="line">data8.bin</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data8.bin</span><br><span class="line">data8.bin: gzip compressed data, was &quot;data9.bin&quot;, last modified: Tue Feb 21 22:02:52 2023, max compression, from Unix, original size modulo 2^32 49</span><br></pre></td></tr></table></figure>
+
+<p>发现是gzip格式，改名，解压，获得密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bandit12@bandit:/tmp/lhk$ ls</span><br><span class="line">data5.tar  data8.gz  data.tar  data.txt</span><br><span class="line">bandit12@bandit:/tmp/lhk$ gzip -d data8.gz</span><br><span class="line">bandit12@bandit:/tmp/lhk$ ls</span><br><span class="line">data5.tar  data8  data.tar  data.txt</span><br><span class="line">bandit12@bandit:/tmp/lhk$ file data8</span><br><span class="line">data8: ASCII text</span><br><span class="line">bandit12@bandit:/tmp/lhk$ cat data8</span><br><span class="line">The password is wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-13"><a href="#bandit-13" class="headerlink" title="bandit 13"></a>bandit 13</h1><p>提示密码在：**&#x2F;etc&#x2F;bandit_pass&#x2F;bandit14 and can only be read by user bandit14**</p>
+<p>但给了可以登录14的ssh私钥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">bandit13@bandit:~$ ls</span><br><span class="line">sshkey.private</span><br><span class="line">bandit13@bandit:~$ head sshkey.private</span><br><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">MIIEpAIBAAKCAQEAxkkOE83W2cOT7IWhFc9aPaaQmQDdgzuXCv+ppZHa++buSkN+</span><br><span class="line">gg0tcr7Fw8NLGa5+Uzec2rEg0WmeevB13AIoYp0MZyETq46t+jk9puNwZwIt9XgB</span><br><span class="line">ZufGtZEwWbFWw/vVLNwOXBe4UWStGRWzgPpEeSv5Tb1VjLZIBdGphTIK22Amz6Zb</span><br><span class="line">ThMsiMnyJafEwJ/T8PQO3myS91vUHEuoOMAzoUID4kN0MEZ3+XahyK0HJVq68KsV</span><br><span class="line">ObefXG1vvA3GAJ29kxJaqvRfgYnqZryWN7w3CHjNU4c/2Jkp+n8L0SnxaNA+WYA7</span><br><span class="line">jiPyTF0is8uzMlYQ4l1Lzh/8/MpvhCQF8r22dwIDAQABAoIBAQC6dWBjhyEOzjeA</span><br><span class="line">J3j/RWmap9M5zfJ/wb2bfidNpwbB8rsJ4sZIDZQ7XuIh4LfygoAQSS+bBw3RXvzE</span><br><span class="line">pvJt3SmU8hIDuLsCjL1VnBY5pY7Bju8g8aR/3FyjyNAqx/TLfzlLYfOu7i9Jet67</span><br><span class="line">xAh0tONG/u8FB5I3LAI2Vp6OviwvdWeC4nOxCthldpuPKNLA8rmMMVRTKQ+7T2VS</span><br></pre></td></tr></table></figure>
+
+<p>登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">bandit13@bandit:~$ ssh -i sshkey.private bandit14@localhost -p2220</span><br><span class="line">The authenticity of host &#x27;[localhost]:2220 ([127.0.0.1]:2220)&#x27; can&#x27;t be established.</span><br><span class="line">ED25519 key fingerprint is SHA256:C2ihUBV7ihnV1wUXRb4RrEcLfXC5CXlhmAAM/urerLY.</span><br><span class="line">This key is not known by any other names</span><br><span class="line">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span><br><span class="line">Could not create directory &#x27;/home/bandit13/.ssh&#x27; (Permission denied).</span><br><span class="line">Failed to add the host to the list of known hosts (/home/bandit13/.ssh/known_hosts).</span><br><span class="line">                         _                     _ _ _</span><br><span class="line">                        | |__   __ _ _ __   __| (_) |_</span><br><span class="line">                        | &#x27;_ \ / _` | &#x27;_ \ / _` | | __|</span><br><span class="line">                        | |_) | (_| | | | | (_| | | |_</span><br><span class="line">                        |_.__/ \__,_|_| |_|\__,_|_|\__|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      This is an OverTheWire game server.</span><br></pre></td></tr></table></figure>
+
+<p>获取提示目录的密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit14@bandit:~$ cat /etc/bandit_pass/bandit14</span><br><span class="line">fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-14"><a href="#bandit-14" class="headerlink" title="bandit 14"></a>bandit 14</h1><p>发送当前密码到本地30000端口，获得下一级密码</p>
+<p>可以由以下方式实现：</p>
+<ul>
+<li>Telnet</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bandit14@bandit:~$ telnet localhost 30000</span><br><span class="line">Trying 127.0.0.1...</span><br><span class="line">Connected to localhost.</span><br><span class="line">Escape character is &#x27;^]&#x27;.</span><br><span class="line">fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq</span><br><span class="line">Correct!</span><br><span class="line">jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt</span><br><span class="line"></span><br><span class="line">Connection closed by foreign host.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>nc</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bandit14@bandit:~$ nc -lv localhost 30000</span><br><span class="line">fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq</span><br><span class="line">jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-15"><a href="#bandit-15" class="headerlink" title="bandit 15"></a>bandit 15</h1><p>发送当前密码到本地30000端口，获得下一级密码，要求使用SSL加密</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bandit15@bandit:~$ openssl s_client -connect localhost:30001</span><br></pre></td></tr></table></figure>
+
+<p>连接后获取下一级密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">read R BLOCK</span><br><span class="line">jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt</span><br><span class="line">Correct!</span><br><span class="line">JQttfApK4SeyHwDlI9SXGR50qclOAil1</span><br><span class="line"></span><br><span class="line">closed</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-16"><a href="#bandit-16" class="headerlink" title="bandit 16"></a>bandit 16</h1><p>发送当前密码到本地31000到32000中的某个使用SSL的活跃端口，会返回下一级密码</p>
+<p>首先确定目标端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bandit16@bandit:~$ nmap -sV localhost -p31000-32000</span><br><span class="line">Starting Nmap 7.80 ( https://nmap.org ) at 2023-03-01 07:11 UTC</span><br><span class="line">Nmap scan report for localhost (127.0.0.1)</span><br><span class="line">Host is up (0.00010s latency).</span><br><span class="line">Not shown: 996 closed ports</span><br><span class="line">PORT      STATE SERVICE     VERSION</span><br><span class="line">31046/tcp open  echo</span><br><span class="line">31518/tcp open  ssl/echo</span><br><span class="line">31691/tcp open  echo</span><br><span class="line">31790/tcp open  ssl/unknown</span><br><span class="line">31960/tcp open  echo</span><br></pre></td></tr></table></figure>
+
+<p>对31518，31790端口尝试连接(31518可建立连接，但不返回信息)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bandit16@bandit:~$ openssl s_client -connect localhost:31790</span><br></pre></td></tr></table></figure>
+
+<p>获得私钥如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ</span><br><span class="line">imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ</span><br><span class="line">Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu</span><br><span class="line">DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW</span><br><span class="line">JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX</span><br><span class="line">x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD</span><br><span class="line">KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl</span><br><span class="line">J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd</span><br><span class="line">d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC</span><br><span class="line">YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A</span><br><span class="line">vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama</span><br><span class="line">+TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT</span><br><span class="line">8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx</span><br><span class="line">SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd</span><br><span class="line">HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt</span><br><span class="line">SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A</span><br><span class="line">R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi</span><br><span class="line">Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg</span><br><span class="line">R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu</span><br><span class="line">L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni</span><br><span class="line">blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU</span><br><span class="line">YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM</span><br><span class="line">77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b</span><br><span class="line">dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3</span><br><span class="line">vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-17"><a href="#bandit-17" class="headerlink" title="bandit 17"></a>bandit 17</h1><p>登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  _posts ssh -i sshkey.private bandit17@bandit.labs.overthewire.org -p 2220</span><br><span class="line">                         _                     _ _ _</span><br><span class="line">                        | |__   __ _ _ __   __| (_) |_</span><br><span class="line">                        | &#x27;_ \ / _` | &#x27;_ \ / _` | | __|</span><br><span class="line">                        | |_) | (_| | | | | (_| | | |_</span><br><span class="line">                        |_.__/ \__,_|_| |_|\__,_|_|\__|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      This is an OverTheWire game server.</span><br><span class="line">            More information on http://www.overthewire.org/wargames</span><br><span class="line"></span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">Permissions 0644 for &#x27;sshkey.private&#x27; are too open.</span><br><span class="line">It is required that your private key files are NOT accessible by others.</span><br></pre></td></tr></table></figure>
+
+<p><strong>It is required that your private key files are NOT accessible by others.</strong></p>
+<p>对key的权限是有限制的，我们对其进行一个700</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  _posts chmod 700 sshkey.private</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以登录进去了，提示一个passwords.new，一个password.old，找不同的那行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bandit17@bandit:~$ diff passwords.new passwords.old</span><br><span class="line">42c42</span><br><span class="line">&lt; hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg</span><br><span class="line">---</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">f9wS9ZUDvZoo3PooHgYuuWdawDFvGld2</span></span><br><span class="line">bandit17@bandit:~$</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-18"><a href="#bandit-18" class="headerlink" title="bandit 18"></a>bandit 18</h1><p>登录上去就byebye～</p>
+<p>提示服务器的.bashrc规定了ssh登录进去就被踢下线，但已知下一级密码在home路径下的readme文件内</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">➜  Desktop sshpass -p hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg ssh bandit18@bandit.labs.overthewire.org -p2220 cat readme</span><br><span class="line">                         _                     _ _ _</span><br><span class="line">                        | |__   __ _ _ __   __| (_) |_</span><br><span class="line">                        | &#x27;_ \ / _` | &#x27;_ \ / _` | | __|</span><br><span class="line">                        | |_) | (_| | | | | (_| | | |_</span><br><span class="line">                        |_.__/ \__,_|_| |_|\__,_|_|\__|</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      This is an OverTheWire game server.</span><br><span class="line">            More information on http://www.overthewire.org/wargames</span><br><span class="line"></span><br><span class="line">awhqfNnAbc1naukrpqDYcF95h7HoMTrC</span><br></pre></td></tr></table></figure>
+
+<p>跟一个cat命令查看，因为.bashrc的加载顺序在后，所以我们可以获得回显</p>
+<h1 id="bandit-19"><a href="#bandit-19" class="headerlink" title="bandit 19"></a>bandit 19</h1><p>使用提供的bandit20-do，变成了20的权限，可以去指定文件夹获得密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bandit19@bandit:~$ file bandit20-do</span><br><span class="line">bandit20-do: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, BuildID[sha1]=c148b21f7eb7e816998f07490c8007567e51953f, for GNU/Linux 3.2.0, not stripped</span><br><span class="line">bandit19@bandit:~$ ./bandit20-do whoami</span><br><span class="line">bandit20</span><br><span class="line">bandit19@bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20</span><br><span class="line">VxCazJaVykI6W36BkBU0mJTCM8rR95XT</span><br></pre></td></tr></table></figure>
+
+<p>这里可以看到bandit20-do是-rw<strong>s</strong>r-x—，x权限代表执行，s权限代表支持强制位，相当于临时拥有文件拥有者身份，也就是bandit20，类似passwd命令，<strong>危险</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit19@bandit:~$ ls -la bandit20-do</span><br><span class="line">-rwsr-x--- 1 bandit20 bandit19 14876 Feb 21 22:03 bandit20-do</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-20"><a href="#bandit-20" class="headerlink" title="bandit 20"></a>bandit 20</h1><p>提供给我们一个程序，运行会连接指定端口，获得当前密码则返回下一级密码</p>
+<p>首先开一个nc监听</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit20@bandit:~$ nc -lv 8888</span><br><span class="line">Listening on 0.0.0.0 8888</span><br></pre></td></tr></table></figure>
+
+<p>然后在对应端口运行给定程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bandit20@bandit:~$ ./suconnect 8888</span><br></pre></td></tr></table></figure>
+
+<p>最后获得密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Connection received on localhost 44364</span><br><span class="line">VxCazJaVykI6W36BkBU0mJTCM8rR95XT</span><br><span class="line">NvEJF7oVjkddltPSrdKEFOllh9V1IBcq</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -274,7 +385,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-11"><span class="nav-number">1.</span> <span class="nav-text">bandit 11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit12"><span class="nav-number">2.</span> <span class="nav-text">bandit12</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-11"><span class="nav-number">1.</span> <span class="nav-text">bandit 11</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-12"><span class="nav-number">2.</span> <span class="nav-text">bandit 12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-13"><span class="nav-number">3.</span> <span class="nav-text">bandit 13</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-14"><span class="nav-number">4.</span> <span class="nav-text">bandit 14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-15"><span class="nav-number">5.</span> <span class="nav-text">bandit 15</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-16"><span class="nav-number">6.</span> <span class="nav-text">bandit 16</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-17"><span class="nav-number">7.</span> <span class="nav-text">bandit 17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-18"><span class="nav-number">8.</span> <span class="nav-text">bandit 18</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-19"><span class="nav-number">9.</span> <span class="nav-text">bandit 19</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-20"><span class="nav-number">10.</span> <span class="nav-text">bandit 20</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
