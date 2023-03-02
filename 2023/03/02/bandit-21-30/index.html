@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32*32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16*16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="bandit 21提示运行了cron,一个通常用于运维管理的命令。 提示查看&#x2F;etc&#x2F;cron.d&#x2F;内的配置文件 12345678bandit21@bandit:~$ cd &#x2F;etc&#x2F;cron.dbandit21@bandit:&#x2F;etc&#x2F;cron.d$ lscronjob_bandit15_root  cronjob_bandit23       e2scrub_a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bandit_21-30">
+<meta property="og:url" content="http://example.com/2023/03/02/bandit-21-30/index.html">
+<meta property="og:site_name" content="Liu Huikang">
+<meta property="og:description" content="bandit 21提示运行了cron,一个通常用于运维管理的命令。 提示查看&#x2F;etc&#x2F;cron.d&#x2F;内的配置文件 12345678bandit21@bandit:~$ cd &#x2F;etc&#x2F;cron.dbandit21@bandit:&#x2F;etc&#x2F;cron.d$ lscronjob_bandit15_root  cronjob_bandit23       e2scrub_a">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://p.ipic.vip/pv7nyf.gif">
+<meta property="og:image" content="https://p.ipic.vip/tacoqt.png">
+<meta property="article:published_time" content="2023-03-02T03:33:05.000Z">
+<meta property="article:modified_time" content="2023-03-02T08:37:16.719Z">
+<meta property="article:author" content="Liu Huikang">
+<meta property="article:tag" content="bandit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p.ipic.vip/pv7nyf.gif">
+
+<link rel="canonical" href="http://example.com/2023/03/02/bandit-21-30/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>bandit_21-30 | Liu Huikang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Liu Huikang</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/02/bandit-21-30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Liu Huikang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Liu Huikang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          bandit_21-30
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-03-02 11:33:05 / Modified: 16:37:16" itemprop="dateCreated datePublished" datetime="2023-03-02T11:33:05+08:00">2023-03-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://p.ipic.vip/pv7nyf.gif" alt="f22bad64c7eb3f8b13c54518884aed52"></p>
+<h1 id="bandit-21"><a href="#bandit-21" class="headerlink" title="bandit 21"></a>bandit 21</h1><p>提示运行了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Cron">cron</a>,一个通常用于运维管理的命令。</p>
+<p>提示查看&#x2F;etc&#x2F;cron.d&#x2F;内的配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bandit21@bandit:~$ cd /etc/cron.d</span><br><span class="line">bandit21@bandit:/etc/cron.d$ ls</span><br><span class="line">cronjob_bandit15_root  cronjob_bandit23       e2scrub_all</span><br><span class="line">cronjob_bandit17_root  cronjob_bandit24       otw-tmp-dir</span><br><span class="line">cronjob_bandit22       cronjob_bandit25_root  sysstat</span><br><span class="line">bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22</span><br><span class="line">@reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null</span><br><span class="line">* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<p>一直在删除&#x2F;usr&#x2F;bin&#x2F;cronjob_bandit22.sh的输出信息跟错误信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</span><br><span class="line">cat /etc/bandit_pass/bandit22 &gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</span><br><span class="line">bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</span><br><span class="line">WdDozAdTM2z9DiFEQ2mGlwngMfj4EZff</span><br></pre></td></tr></table></figure>
+
+<p>该shell脚本改了tmp文件夹644权限，然后写入了bandit22的密码</p>
+<h1 id="bandit-22"><a href="#bandit-22" class="headerlink" title="bandit 22"></a>bandit 22</h1><p>还是cron，继续前往&#x2F;etc&#x2F;cron.d&#x2F;，发现如下脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">myname=$(whoami)</span><br><span class="line">mytarget=$(echo I am user $myname | md5sum | cut -d &#x27; &#x27; -f 1)</span><br><span class="line"></span><br><span class="line">echo &quot;Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget&quot;</span><br><span class="line"></span><br><span class="line">cat /etc/bandit_pass/$myname &gt; /tmp/$mytarget</span><br></pre></td></tr></table></figure>
+
+<p>读程序，复现mytartget&#x3D;8ca319486bfbbc3663ea0fbe81326349，&#x2F;etc&#x2F;bandit_pass&#x2F;bandit23 &gt; &#x2F;tmp&#x2F;8ca319486bfbbc3663ea0fbe81326349</p>
+<p>获得密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit22@bandit:~$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349</span><br><span class="line">QYw0Y2aiA672PsMmh9puTQuhoz8SyR2G</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-23"><a href="#bandit-23" class="headerlink" title="bandit 23"></a>bandit 23</h1><p>查看运行中代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">myname=$(whoami)</span><br><span class="line"></span><br><span class="line">cd /var/spool/$myname/foo</span><br><span class="line">echo &quot;Executing and deleting all scripts in /var/spool/$myname/foo:&quot;</span><br><span class="line">for i in * .*;</span><br><span class="line">do</span><br><span class="line">    if [ &quot;$i&quot; != &quot;.&quot; -a &quot;$i&quot; != &quot;..&quot; ];</span><br><span class="line">    then</span><br><span class="line">        echo &quot;Handling $i&quot;</span><br><span class="line">        owner=&quot;$(stat --format &quot;%U&quot; ./$i)&quot;</span><br><span class="line">        if [ &quot;$&#123;owner&#125;&quot; = &quot;bandit23&quot; ]; then</span><br><span class="line">            timeout -s 9 60 ./$i</span><br><span class="line">        fi</span><br><span class="line">        rm -f ./$i</span><br><span class="line">    fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>看起来是除了.（本级目录）和..（上级目录）文件夹，写了个循环，把&#x2F;var&#x2F;spool&#x2F;bandit24&#x2F;foo&#x2F;里bandit23所拥有的文件先遍历运行，再全删了</p>
+<p>&#x2F;var&#x2F;spool&#x2F;bandit24&#x2F;foo的权限为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bandit23@bandit:/var/spool/bandit24$ ls -la</span><br><span class="line">total 12</span><br><span class="line">dr-xr-x---  3 bandit24 bandit23 4096 Feb 21 22:03 .</span><br><span class="line">drwxr-xr-x  5 root     root     4096 Feb 21 22:03 ..</span><br><span class="line">drwxrwx-wx 10 root     bandit24 4096 Mar  2 05:45 foo</span><br></pre></td></tr></table></figure>
+
+<p>可以向内写文件如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">cat /etc/bandit_pass/bandit24 &gt; /tmp/bandit23/password</span><br></pre></td></tr></table></figure>
+
+<p>此处要记得写完脚本后<strong>赋予权限，检查错误</strong>，一分钟其自动运行后，获得密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bandit23@bandit:/tmp/bandit23$ cat /var/spool/bandit24/foo/lhk.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">cat /etc/bandit_pass/bandit24 &gt;&gt; /tmp/bandit23/password.txt</span><br><span class="line">bandit23@bandit:/tmp/bandit23$ cat /var/spool/bandit24/foo/lhk.sh</span><br><span class="line">cat: /var/spool/bandit24/foo/lhk.sh: No such file or directory</span><br><span class="line">bandit23@bandit:/tmp/bandit23$ ls</span><br><span class="line">lhk.sh  password.txt</span><br><span class="line">bandit23@bandit:/tmp/bandit23$ cat password.txt</span><br><span class="line">VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-24"><a href="#bandit-24" class="headerlink" title="bandit 24"></a>bandit 24</h1><p>需要暴力破解，向30002端口重复发送上一级秘密+某个四位数字获得下一级密码</p>
+<p>首先生成全部组合，运行获得guess.txt</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">for i in &#123;0000..9999&#125;</span><br><span class="line">do</span><br><span class="line">	echo VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar $i &gt;&gt; guess.txt</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>然后连接指定端口，获得结果，正则筛选出密码（grep -v是不含内容）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bandit24@bandit:/tmp/cdc$ cat guess.txt | nc localhost 30002 &gt; respons</span><br><span class="line"></span><br><span class="line">bandit24@bandit:/tmp/cdc$ cat response | grep -v &quot;Try&quot;</span><br><span class="line">I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.</span><br><span class="line">Correct!</span><br><span class="line">The password of user bandit25 is p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-25"><a href="#bandit-25" class="headerlink" title="bandit 25"></a>bandit 25</h1><p>提示26的shell种类并非是&#x2F;bin&#x2F;bash，想办法搞定</p>
+<p>首先&#x2F;etc&#x2F;passwd里有各用户所用的shell种类，即最后运行的程序，先看一眼，确定其使用的是showtext</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bandit25@bandit:/bin$ cat /etc/passwd | grep bandit26</span><br><span class="line">bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext</span><br><span class="line">bandit25@bandit:/bin$ ls -la /usr/bin/showtext</span><br><span class="line">-rwxr-xr-x 1 root root 58 Feb 21 22:03 /usr/bin/showtext</span><br><span class="line">bandit25@bandit:/bin$ cat /usr/bin/showtext</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/sh</span></span><br><span class="line"></span><br><span class="line">export TERM=linux</span><br><span class="line"></span><br><span class="line">exec more ~/text.txt</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+
+<p>不知道什么用，先放着，本地目录有sshkey文件，连接提示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  _                     _ _ _   ___   __</span><br><span class="line"> | |                   | (_) | |__ \ / /</span><br><span class="line"> | |__   __ _ _ __   __| |_| |_   ) / /_</span><br><span class="line"> | &#x27;_ \ / _` | &#x27;_ \ / _` | | __| / / &#x27;_ \</span><br><span class="line"> | |_) | (_| | | | | (_| | | |_ / /| (_) |</span><br><span class="line"> |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/</span><br><span class="line">Connection to localhost closed.</span><br></pre></td></tr></table></figure>
+
+<p>再回头看看，bandit26最后执行了more ~&#x2F;text.txt，然后exit 0退出，调小窗口</p>
+<p><img src="https://p.ipic.vip/tacoqt.png" alt="10ff4535e6f0bad4aa85a1da7400dcb6"></p>
+<p>登录时候触发more的效果，之前因为终端太大了，轮不着more翻页</p>
+<p>按V进入vim模式，使用vim的:e &#x2F;etc&#x2F;bandit_pass&#x2F;bandit26获得密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-26"><a href="#bandit-26" class="headerlink" title="bandit 26"></a>bandit 26</h1><p>还是会秒退，貌似困在vim里了，提示需要用到的命令只有ls，不懂，先看看vim怎么运行命令</p>
+<p>:set shell&#x3D;&#x2F;bin&#x2F;sh</p>
+<p>:sh获取shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">bandit27-do  text.txt</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./bandit27-<span class="keyword">do</span></span></span><br><span class="line">Run a command as another user.</span><br><span class="line">  Example: ./bandit27-do id</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./bandit27-<span class="keyword">do</span> <span class="built_in">cat</span> /etc/bandit_pass/bandit27</span></span><br><span class="line">YnQpBuifNMas1hcUFk70ZmqkhUU2EuaS</span><br></pre></td></tr></table></figure>
+
+<p>为什么vim可以弹出shell，拓展阅读在这里<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hgschool/p/17030085.html">SUID导致的提权问题</a></p>
+<h1 id="bandit-27"><a href="#bandit-27" class="headerlink" title="bandit 27"></a>bandit 27</h1><p>给出git分支的ssh路径，下载后获得下一级密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bandit27@bandit:/tmp/tmp.C0LRv0Mpne$ git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo</span><br></pre></td></tr></table></figure>
+
+<p>这一步简单，但注意要加端口，否则无响应</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bandit27@bandit:/tmp/tmp.C0LRv0Mpne$ cd repo/</span><br><span class="line">bandit27@bandit:/tmp/tmp.C0LRv0Mpne/repo$ ls</span><br><span class="line">README</span><br><span class="line">bandit27@bandit:/tmp/tmp.C0LRv0Mpne/repo$ cat README</span><br><span class="line">The password to the next level is: AVanL161y9rsbcJIsFHuw35rjaOM19nR</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-28"><a href="#bandit-28" class="headerlink" title="bandit 28"></a>bandit 28</h1><p>好像没什么区别，还是下载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit28@bandit:/tmp/tmp.hjCT4HmVNx$ git clone ssh://bandit28-git@localhost:2220/home/bandit28-git/repo</span><br><span class="line">Cloning into &#x27;repo&#x27;...</span><br></pre></td></tr></table></figure>
+
+<p>获得提示如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bandit28@bandit:/tmp/tmp.hjCT4HmVNx$ cd repo/</span><br><span class="line">bandit28@bandit:/tmp/tmp.hjCT4HmVNx/repo$ ls</span><br><span class="line">README.md</span><br><span class="line">bandit28@bandit:/tmp/tmp.hjCT4HmVNx/repo$ cat README.md</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Bandit Notes</span></span><br><span class="line">Some notes for level29 of bandit.</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># credentials</span></span></span><br><span class="line"></span><br><span class="line">- username: bandit29</span><br><span class="line">- password: xxxxxxxxxx</span><br></pre></td></tr></table></figure>
+
+<p>密码是x，查看编辑历史：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">bandit28@bandit:/tmp/tmp.hjCT4HmVNx/repo$ git log</span><br><span class="line">commit 104db85a904e9691ff22aafe1a96124c88f75afa (HEAD -&gt; master, origin/master, origin/HEAD)</span><br><span class="line">Author: Morla Porla &lt;morla@overthewire.org&gt;</span><br><span class="line">Date:   Tue Feb 21 22:03:10 2023 +0000</span><br><span class="line"></span><br><span class="line">    fix info leak</span><br><span class="line"></span><br><span class="line">commit 6c3c5e485cc531e5d52c321587ce1103833ab7c3</span><br><span class="line">Author: Morla Porla &lt;morla@overthewire.org&gt;</span><br><span class="line">Date:   Tue Feb 21 22:03:10 2023 +0000</span><br><span class="line"></span><br><span class="line">    add missing data</span><br><span class="line"></span><br><span class="line">commit cd3b97ef95879ec34df0d6c82f2a96d552f0e56c</span><br><span class="line">Author: Ben Dover &lt;noone@overthewire.org&gt;</span><br><span class="line">Date:   Tue Feb 21 22:03:10 2023 +0000</span><br><span class="line"></span><br><span class="line">    initial commit of README.md</span><br></pre></td></tr></table></figure>
+
+<p>可以看到有个fix info leak，意思把明文密码当错误修复了，使用git diff查看</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bandit28@bandit:/tmp/tmp.hjCT4HmVNx/repo$ git diff HEAD^</span><br><span class="line">diff --git a/README.md b/README.md</span><br><span class="line">index b302105..5c6457b 100644</span><br><span class="line">--- a/README.md</span><br><span class="line">+++ b/README.md</span><br><span class="line">@@ -4,5 +4,5 @@ Some notes for level29 of bandit.</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash"><span class="comment"># credentials</span></span></span><br><span class="line"></span><br><span class="line"> - username: bandit29</span><br><span class="line">-- password: tQKvmcwNYcFS6vmPHIUSI3ShmsrQZK8S</span><br><span class="line">+- password: xxxxxxxxxx</span><br></pre></td></tr></table></figure>
+
+<p><em>git diff HEAD^:比较 workspace 与最新commit的前一次commit的差异</em></p>
+<h1 id="bandit-29"><a href="#bandit-29" class="headerlink" title="bandit 29"></a>bandit 29</h1><p>下载后获得信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bandit29@bandit:/tmp/tmp.WEe9nZqw30$ cd repo/</span><br><span class="line">bandit29@bandit:/tmp/tmp.WEe9nZqw30/repo$ ls</span><br><span class="line">README.md</span><br><span class="line">bandit29@bandit:/tmp/tmp.WEe9nZqw30/repo$ cat README.md</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Bandit Notes</span></span><br><span class="line">Some notes for bandit30 of bandit.</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># credentials</span></span></span><br><span class="line"></span><br><span class="line">- username: bandit30</span><br><span class="line">- password: &lt;no passwords in production!&gt;</span><br></pre></td></tr></table></figure>
+
+<p>既然生产环境没有，可能在别的分支，查看并切换到dev（剩下都是远程分支）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bandit29@bandit:/tmp/tmp.WEe9nZqw30/repo$ git branch -a</span><br><span class="line">* dev</span><br><span class="line">  master</span><br><span class="line">  remotes/origin/HEAD -&gt; origin/master</span><br><span class="line">  remotes/origin/dev</span><br><span class="line">  remotes/origin/master</span><br><span class="line">  remotes/origin/sploits-dev</span><br></pre></td></tr></table></figure>
+
+<p>获得密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bandit29@bandit:/tmp/tmp.WEe9nZqw30/repo$ git diff HEAD^</span><br><span class="line">diff --git a/README.md b/README.md</span><br><span class="line">index 1af21d3..a4b1cf1 100644</span><br><span class="line">--- a/README.md</span><br><span class="line">+++ b/README.md</span><br><span class="line">@@ -4,5 +4,5 @@ Some notes for bandit30 of bandit.</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash"><span class="comment"># credentials</span></span></span><br><span class="line"></span><br><span class="line"> - username: bandit30</span><br><span class="line">-- password: &lt;no passwords in production!&gt;</span><br><span class="line">+- password: xbhV3HpNGlTIdnjUrdAlPzc2L6y9EOnS</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-30"><a href="#bandit-30" class="headerlink" title="bandit 30"></a>bandit 30</h1><p>下载获得信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bandit30@bandit:/tmp/tmp.Akg3AJvG9I$ cd repo/</span><br><span class="line">bandit30@bandit:/tmp/tmp.Akg3AJvG9I/repo$ ls</span><br><span class="line">README.md</span><br><span class="line">bandit30@bandit:/tmp/tmp.Akg3AJvG9I/repo$ cat README.md</span><br><span class="line">just an epmty file... muahaha</span><br></pre></td></tr></table></figure>
+
+<p>查看引用发现secret</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bandit30@bandit:/tmp/tmp.Akg3AJvG9I/repo$ git show-ref</span><br><span class="line">cf552c166d78421e64ddf52f850e680075d216e1 refs/heads/master</span><br><span class="line">cf552c166d78421e64ddf52f850e680075d216e1 refs/remotes/origin/HEAD</span><br><span class="line">cf552c166d78421e64ddf52f850e680075d216e1 refs/remotes/origin/master</span><br><span class="line">831aac2e2341f009e40e46392a4f5dd318483019 refs/tags/secret</span><br></pre></td></tr></table></figure>
+
+<p>使用git show查看获得密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit30@bandit:/tmp/tmp.Akg3AJvG9I/repo$ git show refs/tags/secret</span><br><span class="line">OoffzGDlzhAlerFJ2cAiz1D41JW1Mhmt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>在翻资料的时候发现了一个命令很实用</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bandit30@bandit:~$ mktemp -d</span><br><span class="line">/tmp/tmp.UJwGPf2RaI</span><br><span class="line">bandit30@bandit:~$ cd /tmp/tmp.UJwGPf2RaI</span><br><span class="line">bandit30@bandit:/tmp/tmp.UJwGPf2RaI$</span><br></pre></td></tr></table></figure>
+
+<p>创建一个临时文件夹，&#x2F;temp目录下权限比较宽松，通常所有用户都会有完整的权限</p>
+<p>同时，临时文件的删除由配置控制，不同的系统可能在不同的位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">bandit30@bandit:/usr/lib/tmpfiles.d$ pwd</span><br><span class="line">/usr/lib/tmpfiles.d</span><br><span class="line">bandit30@bandit:/usr/lib/tmpfiles.d$ cat tmp.conf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> This file is part of systemd.</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment">#  systemd is free software; you can redistribute it and/or modify it</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> under the terms of the GNU Lesser General Public License as published by</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> the Free Software Foundation; either version 2.1 of the License, or</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> (at your option) any later version.</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">See tmpfiles.d(5) <span class="keyword">for</span> details</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Clear tmp directories separately, to make them easier to override</span></span><br><span class="line">D /tmp 1777 root root -</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">q /var/tmp 1777 root root 30d</span></span><br></pre></td></tr></table></figure>
+
+<p>总之确实挺好用，不用想临时文件夹起啥名</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/bandit/" rel="tag"># bandit</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/01/shell-sript/" rel="prev" title="shell_sript">
+      <i class="fa fa-chevron-left"></i> shell_sript
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-21"><span class="nav-number">1.</span> <span class="nav-text">bandit 21</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-22"><span class="nav-number">2.</span> <span class="nav-text">bandit 22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-23"><span class="nav-number">3.</span> <span class="nav-text">bandit 23</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-24"><span class="nav-number">4.</span> <span class="nav-text">bandit 24</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-25"><span class="nav-number">5.</span> <span class="nav-text">bandit 25</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-26"><span class="nav-number">6.</span> <span class="nav-text">bandit 26</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-27"><span class="nav-number">7.</span> <span class="nav-text">bandit 27</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-28"><span class="nav-number">8.</span> <span class="nav-text">bandit 28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-29"><span class="nav-number">9.</span> <span class="nav-text">bandit 29</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bandit-30"><span class="nav-number">10.</span> <span class="nav-text">bandit 30</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Liu Huikang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liu Huikang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
