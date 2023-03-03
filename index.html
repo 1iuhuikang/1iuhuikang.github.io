@@ -158,6 +158,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/03/bandit-31-34/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Liu Huikang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Liu Huikang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/03/bandit-31-34/" class="post-title-link" itemprop="url">bandit_31-34</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-03-03 13:40:56 / Modified: 14:09:34" itemprop="dateCreated datePublished" datetime="2023-03-03T13:40:56+08:00">2023-03-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://p.ipic.vip/pojqs0.gif" alt="b23c71ae2424e13057f1cbecb0b270ba"></p>
+<h1 id="bandit-31"><a href="#bandit-31" class="headerlink" title="bandit 31"></a>bandit 31</h1><p>下载获得信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bandit31@bandit:/tmp/tmp.XosqMwpGlB/repo$ ls</span><br><span class="line">README.md</span><br><span class="line">bandit31@bandit:/tmp/tmp.XosqMwpGlB/repo$ cat README.md</span><br><span class="line">This time your task is to push a file to the remote repository.</span><br><span class="line"></span><br><span class="line">Details:</span><br><span class="line">    File name: key.txt</span><br><span class="line">    Content: &#x27;May I come in?&#x27;</span><br><span class="line">    Branch: master</span><br></pre></td></tr></table></figure>
+
+<p>照做：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bandit31@bandit:/tmp/tmp.XosqMwpGlB/repo$ echo &quot;May I come in?&quot; &gt; key.txt</span><br><span class="line">bandit31@bandit:/tmp/tmp.XosqMwpGlB/repo$ git add key.txt</span><br><span class="line">The following paths are ignored by one of your .gitignore files:</span><br><span class="line">key.txt</span><br><span class="line">hint: Use -f if you really want to add them.</span><br><span class="line">hint: Turn this message off by running</span><br><span class="line">hint: &quot;git config advice.addIgnoredFile false&quot;</span><br><span class="line">bandit31@bandit:/tmp/tmp.XosqMwpGlB/repo$ git add -f key.txt</span><br><span class="line">bandit31@bandit:/tmp/tmp.XosqMwpGlB/repo$ git commit -m &quot;add key.txt&quot;</span><br><span class="line">[master 2740bb0] add key.txt</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 key.txt</span><br></pre></td></tr></table></figure>
+
+<p>git push到远程分支，获得密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">remote: ### Attempting to validate files... ####</span><br><span class="line">remote:</span><br><span class="line">remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.</span><br><span class="line">remote:</span><br><span class="line">remote: Well done! Here is the password for the next level:</span><br><span class="line">remote: rmCBvG56y58BXzv98yZGdO7ATVL5dW8y</span><br><span class="line">remote:</span><br><span class="line">remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.</span><br><span class="line">remote:</span><br><span class="line">To ssh://localhost:2220/home/bandit31-git/repo</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="bandit-32"><a href="#bandit-32" class="headerlink" title="bandit 32"></a>bandit 32</h1><p>提示为获取shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt; <span class="variable">$0</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">whoami</span></span></span><br><span class="line">bandit33</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span></span></span><br><span class="line">uppershell</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /etc/bandit_pass/bandit33</span></span><br><span class="line">odHo63fHiFqcWWJG9rLiLDtPm45KzUKy</span><br></pre></td></tr></table></figure>
+
+<p>其实可以看到</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$0</span></span></span><br><span class="line">sh</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span></span><br><span class="line">/home/bandit32/uppershell</span><br></pre></td></tr></table></figure>
+
+<p>输入$0切换到了sh，从而可以输入密码</p>
+<p>至于为什么以及物理机器$0 显示 -zsh，为什么有-，可以<a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/38175/difference-between-login-shell-and-non-login-shell/237672#237672">参考阅读</a></p>
+<h1 id="bandit-33"><a href="#bandit-33" class="headerlink" title="bandit 33"></a>bandit 33</h1><p><a target="_blank" rel="noopener" href="https://overthewire.org/wargames/bandit/bandit34.html">over the wire</a>暂未更新</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/02/bandit-21-30/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -762,7 +841,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
