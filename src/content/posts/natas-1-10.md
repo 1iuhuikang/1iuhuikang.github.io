@@ -4,7 +4,9 @@ description: OverTheWire Natas Web 安全基础靶场记录。
 pubDate: 2023-03-08
 type: oscp
 platform: OverTheWire
- tags: []
+tags: []
+legacyPath: /2023/03/08/natas-1-10/
+migrated: true
 ---
 
 ## Natas
