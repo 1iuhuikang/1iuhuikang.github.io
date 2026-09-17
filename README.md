@@ -1,18 +1,21 @@
 # Liu Huikang — Security Research Blog
 
-This repository is the static site for security research, penetration testing, OSCP notes and technical writeups.
+Astro-based static blog for security research, penetration testing, OSCP notes and technical writeups.
 
-## Architecture
+## Stack
 
-- Astro static site
-- Markdown/MDX content under `src/content/posts/`
-- Typed content schema in `src/content.config.ts`
-- UI/layout under `src/layouts/` and `src/pages/`
-- GitHub Actions builds and deploys the generated `dist/` directory to GitHub Pages
+- Astro 7
+- TypeScript
+- Markdown / MDX content
+- GitHub Pages + GitHub Actions
+- Light / dark mode
+- RSS, sitemap and robots.txt
+- Content-driven archive, categories and tags
+- Client-side search
 
-## Content model
+## Content
 
-Each post has structured frontmatter:
+Articles live under `src/content/posts/` and use typed frontmatter:
 
 - `title`
 - `description`
@@ -23,11 +26,22 @@ Each post has structured frontmatter:
 - `difficulty`
 - `tags`
 
-The goal is to make future ChatGPT-generated writeups directly publishable as Markdown without editing generated HTML.
+The content layer is designed so future OSCP writeups generated from ChatGPT conversations can be published directly as Markdown instead of editing generated HTML.
+
+## Routes
+
+- `/` — latest research
+- `/oscp/`, `/pentest/`, `/research/`, `/notes/` — content categories
+- `/posts/<slug>/` — article pages
+- `/tags/` and `/tags/<tag>/` — tags
+- `/archives/` — chronological archive
+- `/search/` — client-side search
+- `/rss.xml` — RSS feed
+- `/sitemap.xml` — XML sitemap
 
 ## Migration policy
 
-The old Hexo-generated site has been removed from the repository. Only historical posts whose content could be verified from the existing repository were migrated. Articles with no recoverable正文 were removed rather than replaced with invented content.
+The old Hexo-generated site has been removed from `main`. Only content that could be verified from the repository was migrated; articles without recoverable substantive content were intentionally deleted rather than reconstructed. Bandit 1–34 and Natas 1–10 are now maintained as Markdown content.
 
 ## Local development
 
