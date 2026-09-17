@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const posts=(await getCollection('posts')).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf());const years=[...new Set(posts.map(p=>p.data.pubDate.getFullYear()))];
+---
+<BaseLayout title="Archive — Liu Huikang" description="Chronological archive of security research notes and writeups."><section class="section"><div class="eyebrow">CHRONOLOGY</div><h1>Archive</h1>{years.map(year=><section><h2 class="archive-year">{year}</h2><div class="post-list">{posts.filter(p=>p.data.pubDate.getFullYear()===year).map(p=><a class="post-card" href={`/posts/${p.id}/`}><time>{p.data.pubDate.toISOString().slice(5,10)}</time><div><h2>{p.data.title}</h2><p>{p.data.description}</p></div></a>)}</div></section>)}</section></BaseLayout>
