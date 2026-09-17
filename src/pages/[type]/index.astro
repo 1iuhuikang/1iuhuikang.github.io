@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+export async function getStaticPaths(){const types=['oscp','pentest','research','notes'];const posts=await getCollection('posts');return types.map(type=>({params:{type},props:{type,posts:posts.filter(p=>p.data.type===type).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf())}}));}
+const {type,posts}=Astro.props;
+---
+<BaseLayout title={`${type.toUpperCase()} — Liu Huikang`} description={`Liu Huikang ${type} security research and technical notes.`}><section class="section"><div class="eyebrow">KNOWLEDGE BASE</div><h1>{type.toUpperCase()}</h1><div class="post-list">{posts.map(p=><a class="post-card" href={`/posts/${p.id}/`}><time>{p.data.pubDate.toISOString().slice(0,10)}</time><div><h2>{p.data.title}</h2><p>{p.data.description}</p></div><span class="tag">{p.data.tags.join(' · ')}</span></a>)}</div>{posts.length===0&&<p class="muted">No posts yet.</p>}</section></BaseLayout>
