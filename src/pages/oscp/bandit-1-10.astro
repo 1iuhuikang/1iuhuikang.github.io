@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Bandit 1–10 — Liu Huikang">
+<article class="article"><header class="article-header"><div class="eyebrow">OSCP · OVER THE WIRE</div><h1>Bandit 1–10</h1><div class="article-meta"><span>2023-02-28</span><span>LINUX</span><span>FOUNDATIONS</span></div></header><div class="prose">
+<p>原博客的 Bandit 系列笔记，记录 Linux 命令行与文件处理基础。</p>
+<h2>Bandit 0</h2><p>密码存放在当前路径的 readme 中。</p><pre><code>cat readme</code></pre>
+<h2>Bandit 1</h2><p>密码在名为 <code>-</code> 的文件中，可以显式指定路径：</p><pre><code>cat ~/-
+cat &lt; -</code></pre>
+<h2>Bandit 2</h2><p>处理包含空格的文件名，使用转义或 Tab 补全：</p><pre><code>cat spaces\ in\ this\ filename</code></pre>
+<h2>Bandit 3</h2><p>隐藏文件通常以 <code>.</code> 开头：</p><pre><code>ls -a
+cat .hidden</code></pre>
+<h2>迁移说明</h2><p>原文章包含 Bandit 1–10 的连续解题记录。本次先迁移可确认的正文结构，后续将从原始 Markdown 完整恢复剩余关卡，避免对历史内容进行臆造。</p>
+</div></article>
+</BaseLayout>

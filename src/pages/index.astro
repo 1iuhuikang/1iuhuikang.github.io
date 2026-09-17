@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 8);
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="eyebrow">SECURITY RESEARCH · PENTEST · OSCP</div>
+    <h1>Learn. Break.<br />Document.</h1>
+    <p>A technical notebook for penetration testing, security research, CTFs and the OSCP journey.</p>
+  </section>
+  <section class="section">
+    <div class="section-title">LATEST NOTES</div>
+    <div class="post-list">
+      {posts.map((post) => <a class="post-card" href={`/posts/${post.id}/`}>
+        <time>{post.data.pubDate.toISOString().slice(0, 10)}</time>
+        <div><h2>{post.data.title}</h2><p>{post.data.description}</p></div>
+        <span class="tag">{post.data.type.toUpperCase()} →</span>
+      </a>)}
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-title">KNOWLEDGE BASE</div>
+    <div class="post-list">
+      <a class="post-card" href="/oscp/"><time>01</time><div><h2>OSCP</h2><p>Machine writeups, enumeration, exploitation and privilege escalation.</p></div><span class="tag">EXPLORE →</span></a>
+      <a class="post-card" href="/pentest/"><time>02</time><div><h2>Pentesting</h2><p>Web, Windows, Linux, Active Directory and practical tooling.</p></div><span class="tag">EXPLORE →</span></a>
+      <a class="post-card" href="/research/"><time>03</time><div><h2>Research</h2><p>Mobile security, Frida, Burp Suite and security experiments.</p></div><span class="tag">EXPLORE →</span></a>
+    </div>
+  </section>
+</BaseLayout>
