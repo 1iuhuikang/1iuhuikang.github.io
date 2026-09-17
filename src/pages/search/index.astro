@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const posts=await getCollection('posts');const index=posts.map(p=>({title:p.data.title,description:p.data.description,type:p.data.type,tags:p.data.tags,date:p.data.pubDate.toISOString().slice(0,10),url:`/posts/${p.id}/`}));
+---
+<BaseLayout title="Search — Liu Huikang" description="Search security research notes and writeups."><section class="section"><div class="eyebrow">FIND</div><h1>Search</h1><input id="search" class="search-box" type="search" placeholder="Search title, description, tag..." autocomplete="off" /><div id="results" class="search-results"></div></section></BaseLayout>
+<script define:vars={{index}}>
+const input=document.querySelector('#search'),out=document.querySelector('#results');
+function render(q=''){const terms=q.toLowerCase().trim().split(/\s+/).filter(Boolean);const rows=index.filter(p=>terms.every(t=>JSON.stringify(p).toLowerCase().includes(t)));out.innerHTML=rows.length?rows.map(p=>`<article class="result"><a href="${p.url}"><h3>${p.title}</h3><div class="muted">${p.date} · ${p.type} · ${p.tags.map(t=>'#'+t).join(' ')}</div><p>${p.description}</p></a></article>`).join(''):'<p class="muted">No matching posts.</p>';}input.addEventListener('input',()=>render(input.value));render();
+</script>
