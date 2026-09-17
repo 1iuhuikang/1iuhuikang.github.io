@@ -22,14 +22,12 @@ Each post has structured frontmatter:
 - `os`
 - `difficulty`
 - `tags`
-- `legacyPath`
-- `migrated`
 
 The goal is to make future ChatGPT-generated writeups directly publishable as Markdown without editing generated HTML.
 
 ## Migration policy
 
-The old Hexo output remains untouched on `main` until the Astro replacement is reviewed. Historical posts are migrated only from content that can be verified in the existing repository. Missing source Markdown is not reconstructed from memory; those posts are marked for later recovery.
+The old Hexo-generated site has been removed from the repository. Only historical posts whose content could be verified from the existing repository were migrated. Articles with no recoverable正文 were removed rather than replaced with invented content.
 
 ## Local development
 
