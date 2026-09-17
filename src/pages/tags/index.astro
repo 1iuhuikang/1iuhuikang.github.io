@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const posts=await getCollection('posts');const counts=new Map();for(const p of posts)for(const tag of p.data.tags)counts.set(tag,(counts.get(tag)||0)+1);const tags=[...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
+---
+<BaseLayout title="Tags — Liu Huikang" description="Security research notes organized by tag."><section class="section"><div class="eyebrow">INDEX</div><h1>Tags</h1><div class="post-list">{tags.map(([tag,count])=><a class="post-card" href={`/tags/${encodeURIComponent(tag)}/`}><span class="tag">#{tag}</span><div><h2>{count} {count===1?'post':'posts'}</h2></div></a>)}</div></section></BaseLayout>
