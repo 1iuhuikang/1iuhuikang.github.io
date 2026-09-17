@@ -1,12 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-const posts = [
-  {date:'2023-09-14', title:'Frida安装', desc:'Frida host / Android server setup and basic verification.', href:'/research/frida-install/'},
-  {date:'2023-09-14', title:'Frida绕过证书校验', desc:'Android mobile security notes on certificate pinning bypass.', href:'/research/frida-certificate-pinning/'},
-  {date:'2023-09-14', title:'Charles抓手机客户端包', desc:'Mobile traffic interception notes.', href:'/research/charles-mobile/'},
-  {date:'2023-03-08', title:'Natas 1–10', desc:'Web security fundamentals through OverTheWire Natas.', href:'/oscp/natas-1-10/'},
-  {date:'2023-02-28', title:'Bandit 1–10', desc:'Linux command-line fundamentals through OverTheWire Bandit.', href:'/oscp/bandit-1-10/'},
-];
+
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 8);
 ---
 <BaseLayout>
   <section class="hero">
@@ -17,7 +15,11 @@ const posts = [
   <section class="section">
     <div class="section-title">LATEST NOTES</div>
     <div class="post-list">
-      {posts.map((post) => <a class="post-card" href={post.href}><time>{post.date}</time><div><h2>{post.title}</h2><p>{post.desc}</p></div><span class="tag">READ →</span></a>)}
+      {posts.map((post) => <a class="post-card" href={`/posts/${post.id}/`}>
+        <time>{post.data.pubDate.toISOString().slice(0, 10)}</time>
+        <div><h2>{post.data.title}</h2><p>{post.data.description}</p></div>
+        <span class="tag">{post.data.type.toUpperCase()} →</span>
+      </a>)}
     </div>
   </section>
   <section class="section">
