@@ -1,4 +1,32 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('posts'))
+  .filter((post) => post.data.type === 'research')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
-<BaseLayout title="Research — Liu Huikang"><section class="hero"><div class="eyebrow">KNOWLEDGE BASE · RESEARCH</div><h1>Research</h1><p>Mobile security, Frida, traffic interception and practical security tooling.</p></section><section class="section"><div class="section-title">ARTICLES</div><div class="post-list"><a class="post-card" href="/research/frida-install/"><time>2023-09-14</time><div><h2>Frida安装</h2><p>Frida host and Android server setup.</p></div><span class="tag">READ →</span></a><a class="post-card" href="/research/charles-mobile/"><time>2023-09-14</time><div><h2>Charles抓手机客户端包</h2><p>Mobile traffic interception notes.</p></div><span class="tag">READ →</span></a><a class="post-card" href="/research/frida-certificate-pinning/"><time>2023-09-14</time><div><h2>Frida绕过证书校验</h2><p>Certificate pinning research notes.</p></div><span class="tag">READ →</span></a></div></section></BaseLayout>
+
+<BaseLayout title="Research — Liu Huikang">
+  <section class="hero">
+    <div class="eyebrow">KNOWLEDGE BASE · RESEARCH</div>
+    <h1>Research</h1>
+    <p>Mobile security, Frida, traffic interception and practical security tooling.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-title">ARTICLES</div>
+    <div class="post-list">
+      {posts.map((post) => (
+        <a class="post-card" href={`/posts/${post.id}/`}>
+          <time>{post.data.pubDate.toISOString().slice(0, 10)}</time>
+          <div>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+          </div>
+          <span class="tag">READ →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
